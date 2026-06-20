@@ -15,7 +15,16 @@ async function bootstrap() {
   );
 
   // Enable CORS
-  app.enableCors();
+  app.enableCors({
+    origin: [
+      'https://www.bluvelhq.com',
+      'https://bluvelhq.com',
+      'http://localhost:5173', // Vite client local port
+      'http://localhost:3000', // Alternate client local port
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
 
   // Set global API prefix
   app.setGlobalPrefix('api');
